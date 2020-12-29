@@ -122,6 +122,16 @@ body {
         transform: translate(0);
     }
 }
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
 
 /* link pseudo class to style elements under special condition */
 .btn:link,
@@ -133,6 +143,8 @@ body {
     border-radius: 100px;
     /* transition animates hover and active always on the initial state */
     transition: all .2s;
+    /* to work as parent for ::after button */
+    position: relative;
 }
 
 /* more about box shadow: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
@@ -149,4 +161,33 @@ body {
 .btn-white {
     background-color: white;
     color: #777777;
+}
+
+/* after is treated like child of button */
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: white;
+}
+
+.btn:hover::after {
+   transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    /* apply 0% styles before animation starts */
+    animation-fill-mode: backwards;
 }
