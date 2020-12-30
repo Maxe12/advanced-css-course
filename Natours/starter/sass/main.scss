@@ -4,6 +4,8 @@ $color-primary-dark: #28b485;
 
 $color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
+
 /* Universal reset for also all pseudo elements */
 *,
 *::after,
@@ -41,26 +43,26 @@ body {
   background-position: top;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative;
-}
 
-/* Top Left etc. starts from parent element with relative position (Set header to pos relative!!! */
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
+  //Top Left etc. starts from parent element with relative position (Set header to pos relative!!!
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
 
-.header__logo {
-  height: 3.5rem;
-}
+  &__logo {
+    height: 3.5rem;
+  }
 
-/* Center Heading */
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  /* Center Heading */
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 }
 
 .heading-primary {
@@ -70,33 +72,33 @@ body {
 
   /* animation shaking fix */
   backface-visibility: hidden;
-}
 
-/* Display Block and spans to cut h1 */
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
+  /* Display Block and spans to cut h1 */
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
 
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  /* https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function */
-  /*  optional attributes
-      animation-delay: 2s;
-      animation-iteration-count: 3;
-  */
-}
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function */
+    /*  optional attributes
+        animation-delay: 2s;
+        animation-iteration-count: 3;
+    */
+  }
 
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
 
-  /* you can put all attributes together */
-  animation: moveInRight 1s ease-out;
+    /* you can put all attributes together */
+    animation: moveInRight 1s ease-out;
+  }
 }
 
 /* recommendation to only animate 2 properties */
@@ -138,62 +140,62 @@ body {
   }
 }
 
-/* link pseudo class to style elements under special condition */
-.btn:link,
-.btn:visited {
-  display: inline-block;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  border-radius: 10rem;
-  /* transition animates hover and active always on the initial state */
-  transition: all .2s;
-  /* to work as parent for ::after button */
-  position: relative;
-  font-size: 1.6rem;
-}
+.btn {
+  /* link pseudo class to style elements under special condition */
+  &:link,
+  &:visited {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    /* transition animates hover and active always on the initial state */
+    transition: all .2s;
+    /* to work as parent for ::after button */
+    position: relative;
+    font-size: 1.6rem;
+  }
 
-/* more about box shadow: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
-.btn:hover {
-  transform: translateY(-.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
-}
+  /* more about box shadow: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
+  &:hover {
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+      &::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+      }
+  }
 
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-}
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
 
-.btn--white {
-  background-color: $color-white;
-  color: $color-grey-dark;
-}
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+      &::after {
+        background-color: $color-white;
+      }
+  }
 
-/* after is treated like child of button */
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all .4s;
-}
+  /* after is treated like child of button */
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
 
-.btn--white::after {
-  background-color: $color-white;
-}
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-}
-
-.btn--animated {
-  animation: moveInBottom .5s ease-out .75s;
-  /* apply 0% styles before animation starts */
-  animation-fill-mode: backwards;
+  &--animated {
+    animation: moveInBottom .5s ease-out .75s;
+    /* apply 0% styles before animation starts */
+    animation-fill-mode: backwards;
+  }
 }
