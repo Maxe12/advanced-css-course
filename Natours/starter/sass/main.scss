@@ -1,15 +1,22 @@
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-grey-dark: #777;
+$color-white: #fff;
+
 /* Universal reset for also all pseudo elements */
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-  /* force inheritance from body for everything (considered good practice) */ }
+  box-sizing: inherit; /* force inheritance from body for everything (considered good practice) */
+}
 
 html {
-  font-size: 62.5%;
-  /* 10(wanted) / 16 (browser default) = .625 translates to 10px --> 1rem is now 10px */ }
+  font-size: 62.5%; /* 10(wanted) / 16 (browser default) = .625 translates to 10px --> 1rem is now 10px */
+}
 
 /* Setting font project wide in body because of inheritance */
 body {
@@ -17,27 +24,36 @@ body {
   font-weight: 400;
   /*moved to html for responsiveness: font-size: 16px;*/
   line-height: 1.7;
-  color: #777;
+  color: $color-grey-dark;
   padding: 3rem;
-  box-sizing: border-box; }
+
+  box-sizing: border-box;
+}
 
 /* Clip Path: https://bennettfeely.com/clippy/ */
-.header {
+.header{
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  background-image: linear-gradient(
+                  to right bottom,
+                  rgba($color-primary-light, 0.8),
+                  rgba($color-primary-dark, 0.8)),
+  url("../img/hero.jpg");
   background-size: cover;
   background-position: top;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  position: relative; }
+  position: relative;
+}
 
 /* Top Left etc. starts from parent element with relative position (Set header to pos relative!!! */
 .header__logo-box {
   position: absolute;
   top: 4rem;
-  left: 4rem; }
+  left: 4rem;
+}
 
 .header__logo {
-  height: 3.5rem; }
+  height: 3.5rem;
+}
 
 /* Center Heading */
 .header__text-box {
@@ -45,14 +61,17 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center; }
+  text-align: center;
+}
 
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
   margin-bottom: 6rem;
+
   /* animation shaking fix */
-  backface-visibility: hidden; }
+  backface-visibility: hidden;
+}
 
 /* Display Block and spans to cut h1 */
 .heading-primary--main {
@@ -60,6 +79,7 @@ body {
   font-size: 6rem;
   font-weight: 400;
   letter-spacing: 3.5rem;
+
   animation-name: moveInLeft;
   animation-duration: 1s;
   animation-timing-function: ease-out;
@@ -67,44 +87,57 @@ body {
   /*  optional attributes
       animation-delay: 2s;
       animation-iteration-count: 3;
-  */ }
+  */
+}
 
 .heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1.75rem;
+
   /* you can put all attributes together */
-  animation: moveInRight 1s ease-out; }
+  animation: moveInRight 1s ease-out;
+}
 
 /* recommendation to only animate 2 properties */
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem); }
+    transform: translateX(-10rem);
+  }
   80% {
-    transform: translateX(1rem); }
+    transform: translateX(1rem);
+  }
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(10rem); }
+    transform: translateX(10rem);
+  }
   80% {
-    transform: translateX(-1rem); }
+    transform: translateX(-1rem);
+  }
   100% {
     opacity: 1;
-    transform: translate(0); } }
-
+    transform: translate(0);
+  }
+}
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(3rem); }
+    transform: translateY(3rem);
+  }
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 /* link pseudo class to style elements under special condition */
 .btn:link,
@@ -118,20 +151,24 @@ body {
   transition: all .2s;
   /* to work as parent for ::after button */
   position: relative;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+}
 
 /* more about box shadow: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
 .btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  transform: translateY(-.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
 
 .btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}
 
 .btn--white {
-  background-color: #fff;
-  color: #777; }
+  background-color: $color-white;
+  color: $color-grey-dark;
+}
 
 /* after is treated like child of button */
 .btn::after {
@@ -144,16 +181,20 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  transition: all .4s; }
+  transition: all .4s;
+}
 
 .btn--white::after {
-  background-color: #fff; }
+  background-color: $color-white;
+}
 
 .btn:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
+  opacity: 0;
+}
 
 .btn--animated {
   animation: moveInBottom .5s ease-out .75s;
   /* apply 0% styles before animation starts */
-  animation-fill-mode: backwards; }
+  animation-fill-mode: backwards;
+}
