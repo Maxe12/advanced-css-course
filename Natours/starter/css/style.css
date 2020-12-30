@@ -11,65 +11,8 @@ html {
   font-size: 62.5%;
   /* 10(wanted) / 16 (browser default) = .625 translates to 10px --> 1rem is now 10px */ }
 
-/* Setting font project wide in body because of inheritance */
 body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  /*moved to html for responsiveness: font-size: 16px;*/
-  line-height: 1.7;
-  color: #777;
-  padding: 3rem;
   box-sizing: border-box; }
-
-/* Clip Path: https://bennettfeely.com/clippy/ */
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
-  background-size: cover;
-  background-position: top;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  position: relative;
-  /* Center Heading */ }
-  .header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem; }
-  .header__logo {
-    height: 3.5rem; }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  margin-bottom: 6rem;
-  /* animation shaking fix */
-  backface-visibility: hidden;
-  /* Display Block and spans to cut h1 */ }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    /* https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function */
-    /*  optional attributes
-        animation-delay: 2s;
-        animation-iteration-count: 3;
-    */ }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    /* you can put all attributes together */
-    animation: moveInRight 1s ease-out; }
 
 /* recommendation to only animate 2 properties */
 @keyframes moveInLeft {
@@ -99,6 +42,43 @@ body {
   100% {
     opacity: 1;
     transform: translate(0); } }
+
+/* Setting font project wide in body because of inheritance */
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /*moved to html for responsiveness: font-size: 16px;*/
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  /* animation shaking fix */
+  backface-visibility: hidden;
+  /* Display Block and spans to cut h1 */ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function */
+    /*  optional attributes
+        animation-delay: 2s;
+        animation-iteration-count: 3;
+    */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    /* you can put all attributes together */
+    animation: moveInRight 1s ease-out; }
 
 .btn {
   /* link pseudo class to style elements under special condition */
@@ -144,3 +124,25 @@ body {
     animation: moveInBottom .5s ease-out .75s;
     /* apply 0% styles before animation starts */
     animation-fill-mode: backwards; }
+
+/* Clip Path: https://bennettfeely.com/clippy/ */
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+  /* Center Heading */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }

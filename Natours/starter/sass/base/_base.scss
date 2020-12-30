@@ -1,0 +1,17 @@
+/* Universal reset for also all pseudo elements */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /* force inheritance from body for everything (considered good practice) */
+}
+
+// could also be typography but it defines what 1 rem is so its base
+html {
+  font-size: 62.5%; /* 10(wanted) / 16 (browser default) = .625 translates to 10px --> 1rem is now 10px */
+}
+
+body {
+  box-sizing: border-box;
+}

@@ -1,0 +1,60 @@
+
+.btn {
+  /* link pseudo class to style elements under special condition */
+  &:link,
+  &:visited {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    /* transition animates hover and active always on the initial state */
+    transition: all .2s;
+    /* to work as parent for ::after button */
+    position: relative;
+    font-size: 1.6rem;
+  }
+
+  /* more about box shadow: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
+  &:hover {
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  /* after is treated like child of button */
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+
+  &--animated {
+    animation: moveInBottom .5s ease-out .75s;
+    /* apply 0% styles before animation starts */
+    animation-fill-mode: backwards;
+  }
+}
