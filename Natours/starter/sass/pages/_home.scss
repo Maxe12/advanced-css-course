@@ -1,0 +1,6 @@
+.section-about {
+  background-color: $color-grey-light-1;
+  padding: 25rem 0;
+  // to get the background for the polygon cut (95vh - 75vh --> header.scss)
+  margin-top: -20vh;
+}

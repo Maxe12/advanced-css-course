@@ -1,6 +1,5 @@
 .row {
   max-width: $grid-width; // standard row width 1140 px!
-  background-color: lightgrey; // debug
   margin: 0 auto; // center block elements inside other block elements <=> ml-auto mr-auto
 
   //for everything except the last child
@@ -13,7 +12,6 @@
   // select every element where class attribute starts with col-
   // more about attribute selectors: https://developer.mozilla.org/de/docs/Web/CSS/Attributselektoren
   [class^="col-"] {
-    background-color: orangered;
     float: left;
 
     &:not(:last-child) {
