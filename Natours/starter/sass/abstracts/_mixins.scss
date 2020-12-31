@@ -1,0 +1,8 @@
+// standard clearfix for float layout to get height back
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
