@@ -4,3 +4,21 @@
   // to get the background for the polygon cut (95vh - 75vh --> header.scss)
   margin-top: -20vh;
 }
+
+.section-features {
+  padding: 20rem 0;
+  margin-top: -10rem;
+  background-image: linear-gradient(
+                  to right bottom,
+                  rgba($color-primary-light, 0.8),
+                  rgba($color-primary-dark, 0.8)),
+  url("../img/nat-4.jpg");
+  background-size: cover;
+
+  transform: skewY(-6deg);
+
+  // to select all DIRECT child's! to compensate section skewing
+  & > * {
+    transform: skewY(6deg);
+  }
+}
