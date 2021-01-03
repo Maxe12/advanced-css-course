@@ -1,0 +1,74 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, .1);
+  background-color: rgba($color-white, .6);
+  border-radius: .3rem;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  & > * {
+    // this doesnt work, because shape already has transform elemnt on it
+    // --> we need to add it manually to the shape and the text
+    // transform: skewX(12deg);
+  }
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    // float is required for shape-outside also width and height need to be assigned
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);;
+    shape-outside: circle(50% at 50% 50%);
+    // make shape to look like a circle
+    --webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    // to align float use transform push circle to the left
+    transform: translateX(-3rem) skewX(12deg);
+    // parent for the absolute caption
+    position: relative;
+  }
+
+  &__img {
+    // 100% of parent (__shape = 15rem)
+    height: 100%;
+    // move image to the center
+    transform: translateX(-4rem) scale(1.4);
+    transition: all .5s;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // move it 20% down on y --> initial position for the fade in effect
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all .5s;
+    // remove shaking from animation
+    backface-visibility: hidden;
+  }
+
+  // change y to -50% on story hover
+  &:hover &__caption{
+    opacity: 1;
+    // we cant just use translateY need to transform the same property
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1);
+    // make the blur effect and make the image darker
+    filter: blur(.3rem) brightness(80%);
+  }
+}
