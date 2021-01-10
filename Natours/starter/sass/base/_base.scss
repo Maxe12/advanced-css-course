@@ -10,6 +10,18 @@
 // could also be typography but it defines what 1 rem is so its base
 html {
   font-size: 62.5%; /* 10(wanted) / 16 (browser default) = .625 translates to 10px --> 1rem is now 10px */
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12px
+  }
+
+  @include respond(tablet-landscape) {
+    font-size: 56.25%; // 1rem = 9px
+  }
+
+  @include respond(tablet-portrait) {
+    font-size: 50%; //1 rem = 8px
+  }
 }
 
 body {

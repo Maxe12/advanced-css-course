@@ -1,3 +1,25 @@
+/*
+MEDIA QUERY MANAGER
+
+Sizes:
+
+0 - 600px: Phone
+600 - 900px: Tablet portrait
+900 - 1200px: Tablet landscape
+[1200 - 1800] normal styles
+1800 +: Big Desktop
+
+$breakpoint arguments:
+- phone
+- tablet-portrait
+- tablet-landscape
+- big-desktop
+
+usage:
+@include respond(phone) { ... } || (for phone)
+
+1em = 16px
+ */
 /* Universal reset for also all pseudo elements */
 *,
 *::after,
@@ -10,6 +32,15 @@
 html {
   font-size: 62.5%;
   /* 10(wanted) / 16 (browser default) = .625 translates to 10px --> 1rem is now 10px */ }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
 
 body {
   box-sizing: border-box; }
