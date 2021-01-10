@@ -86,11 +86,8 @@
       width: 1.3rem;
       border-radius: 50%;
       // its fine for the parent to be also absolut
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      // put it in the center
-      transform: translate(-50%, -50%);
+      @include absolutCenter;
+
       background-color: $color-primary;
       opacity: 0;
       transition: opacity .2s;
