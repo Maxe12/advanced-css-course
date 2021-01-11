@@ -34,6 +34,8 @@ $breakpoint arguments:
 usage:
 @include respond(phone) { ... } || (for phone)
 
+ORDER: Base + typography > general layout + grid > page layout > components
+
 1em = 16px
  */
 @mixin respond($breakpoint) {
